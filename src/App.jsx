@@ -8,6 +8,7 @@ import Login from './usersLogin/Login';
 import ChangePassword from './ChangePassword/ChangePassword';
 import Message from './usersMessage/Message';
 import { UserProvider } from './userContext/UserContext';
+import BaseUrlContext from './BaseUrlContext/BaseUrlContext';
 import Logout from './Logout';
 
 const router = createBrowserRouter(
@@ -23,13 +24,19 @@ const router = createBrowserRouter(
   )
 );
 
+const baseURL = 'https://my-backend.vercel.app:3000';
+
+
+
 function App() {
   return (
+    <BaseUrlContext.Provider value={baseURL}>
     <UserProvider>
       <div className="App">
         <RouterProvider router={router} />
       </div>
     </UserProvider>
+    </BaseUrlContext.Provider>
   );
 }
 

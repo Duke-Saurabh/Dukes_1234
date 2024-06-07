@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import BaseUrlContext from '../BaseUrlContext/BaseUrlContext';
 import './ChangePassword.css';
 import SecurityKey from '../components/SecurityKey';
 import VerifyCaptcha from '../usersRegister/VerifyCaptcha';
@@ -13,6 +14,8 @@ function ChangePassword() {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
+
+  const baseURL=useContext(BaseUrlContext);
 
   const handlePasswordChangeEvent = async(event) => {
     event.preventDefault();
@@ -53,7 +56,7 @@ function ChangePassword() {
     try {
       // Perform the password change request
       // fetch('your-api-endpoint', options).then(response => response.json()).then(data => { /* handle response */ });
-      const response=await fetch('http://localhost:3000/api/v1/users/password',options);
+      const response=await fetch(`${baseURL}/api/v1/users/password`,options);
         if (response.ok) {
           alert('Password Change successful!');
           

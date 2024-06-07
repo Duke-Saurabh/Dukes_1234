@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
+import BaseUrlContext from '../BaseUrlContext/BaseUrlContext';
 import Name from './Name';
 import UserName from './UserName';
 import Email from './Email';
@@ -19,6 +20,10 @@ function Register() {
   const [securityQuestion, setSecurityQuestion] = useState('');
   const [securityAnswer, setSecurityAnswer] = useState('');
   const [captchaVerified, setCaptchaVerified] = useState(false);
+
+
+  const baseURL = useContext(BaseUrlContext);
+
 
   const myStyle = {
     backgroundColor: 'pink',
@@ -54,7 +59,7 @@ function Register() {
     formData.append('securityAnswer', securityAnswer);
 
     try {
-      const response = await fetch('http://localhost:3000/api/v1/users/register', {
+        const response = await fetch(`${baseURL}/api/v1/users/register`, {
         method: 'POST',
         body: formData,
       });

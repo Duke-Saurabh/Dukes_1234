@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import BaseUrlContext from '../BaseUrlContext/BaseUrlContext';
 import './Login.css';
 import CaptchaCode from '../components/CaptchaCode';
 import { UserContext } from '../userContext/UserContext';
@@ -9,9 +10,11 @@ function Login() {
   const [userName, setUserName] = useState('');
   const [passwordEntered, setPasswordEntered] = useState('');
   const [captchaVerified,setCaptchaVerified]=useState(false);
+
   
   const navigate=useNavigate()
 
+  const baseURL = useContext(BaseUrlContext);
   const { setUser } = useContext(UserContext);
 
  
