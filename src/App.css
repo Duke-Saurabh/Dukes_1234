@@ -1,0 +1,30 @@
+*{
+    margin:0;
+    box-sizing:border-box;
+    padding:0;
+    overflow:hidden ;
+}
+.App {
+    text-align: center;
+    background-color: #61dafb;
+    max-width: 930px;
+    margin: auto;
+    overflow:hidden ;/*we can use overflow-x(for horizontal) or overflow-y(for vertical) properties instead;*/
+  }
+  
+/*   
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  } */
+  
+  .App-link {
+    color: #61dafb;
+  }
+  

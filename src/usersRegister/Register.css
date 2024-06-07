@@ -1,0 +1,30 @@
+#Register-container{
+    overflow: auto !important;
+    background-color: orange;
+}
+
+.verify-part{
+    display: flex;
+    justify-content:space-evenly;
+    background-color: yellow;
+}
+
+.verify-part verifyCaptcha{
+    background-color: red;
+}
+
+.page-top-manage{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.login-page-route{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.photoUploader{
+    margin-left: auto;
+    margin-right: auto;
+}
+

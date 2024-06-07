@@ -1,0 +1,14 @@
+.securityKey{
+    background-color: red;
+    max-width: 460px;
+    /* margin: auto; */
+    padding:2px;
+    padding-left: 0;
+    display: inline-block;
+}
+
+
+.securityKey input{
+    width:100%;
+    max-width: 460px;
+}

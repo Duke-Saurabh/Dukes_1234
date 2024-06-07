@@ -1,0 +1,43 @@
+.inputContainer{
+   width:100%;
+   border:2px Solid rgba(118, 29, 29, 0.3);
+   border-radius:5px;
+   background-color: rgb(39, 158, 15);
+   margin-top: 5px;
+   margin-bottom: 5px;
+   display: flex;
+   align-items: baseline;
+   justify-content: space-between;
+   height:50px;
+}
+
+.inputAsked{
+   width:calc(50% - 20px);
+   min-width: fit-content;
+   line-height: 45px;
+  
+   font:  sans-serif;
+
+   border-radius:5px;
+}
+ 
+ .inputToType{
+   width:calc(60%);
+   height:max-content;
+   display: inline-block;
+   padding:10px;
+   margin:5px;
+   border:2px Solid rgba(141, 52, 52,0.3);
+   border-radius:5px;  
+   text-align: center; 
+} 
+
+ 
+.inputToType:focus{
+   border:2px solid green;
+   border-radius:10px;
+   outline:1px solid green;
+   outline-offset:0;
+   
+}
+ 

@@ -1,0 +1,15 @@
+.photoUploader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .photoUploader label {
+    margin-top: 10px;
+  }
+  
+  .photoUploader .error {
+    color: red;
+    margin-top: 10px;
+  }
+  

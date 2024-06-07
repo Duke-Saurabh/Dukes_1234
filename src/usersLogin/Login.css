@@ -1,0 +1,77 @@
+
+.login{
+    width:60%;
+    height:90%;
+    background-color: white;
+    margin: auto;
+    margin-top: 6%;
+    padding: 10px;
+}
+
+.login-box{
+    width:100%;
+    height: 90%;
+    border:1px solid rgb(132, 119, 119);
+    margin-top:5px;
+    /* padding: 10px; */
+    border-radius:1px;
+}
+
+.login-description{
+    background-color: rgb(244, 239, 239);
+     display: block;
+    height: 40px;
+    display: grid;
+    place-items: center center;
+}
+
+
+.login-description p{
+    background-color: rgb(218, 207, 207);
+    display: inline-block;
+    height:100%;
+    padding-top: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.login-main-box, .login-main-box div{
+    padding: 10px;
+    text-align: left;
+    width:100%;
+    background-color: rgb(172, 164, 164);
+}
+
+.login-main-box div input{
+    padding: 10px;
+    text-align: left;
+    width:100%;
+    margin: auto;
+}
+
+.login-btn{
+    text-align: left;
+    margin-left: 20px;
+}
+.other-opt{
+    display: flex;
+    justify-content: space-between;
+}
+
+.forget-password{
+    text-align: left;
+    color:red
+}
+
+.forgetPassword-link,.sign-up-link{
+    color:red;
+    text-decoration:none;
+}
+
+/* .forget-password-link{
+    text-decoration:none;
+} */
+/*
+.sign-up-btn{
+    text-align: right;
+} */
