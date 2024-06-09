@@ -24,7 +24,7 @@ const router = createBrowserRouter(
   )
 );
 
-const baseURL = 'https://my-backend.vercel.app:3000';
+const baseURL = 'https://dukes-1234-backend.vercel.app';
 
 
 

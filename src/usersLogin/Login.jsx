@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import BaseUrlContext from '../BaseUrlContext/BaseUrlContext';
 import './Login.css';
 import CaptchaCode from '../components/CaptchaCode';
 import { UserContext } from '../userContext/UserContext';
@@ -10,11 +9,9 @@ function Login() {
   const [userName, setUserName] = useState('');
   const [passwordEntered, setPasswordEntered] = useState('');
   const [captchaVerified,setCaptchaVerified]=useState(false);
-
   
   const navigate=useNavigate()
 
-  const baseURL = useContext(BaseUrlContext);
   const { setUser } = useContext(UserContext);
 
  
@@ -47,7 +44,8 @@ const handleLogin = async (e) => {
   };
 
   try {
-    const response = await fetch('http://localhost:3000/api/v1/users/login', options);
+    const response = await fetch('https://dukes-1234-backend.vercel.app/api/v1/users/login',options);
+    console.log(response);
     if (response.ok) {
       const responseData = await response.json();
       const { accessToken, refreshToken,user } = responseData;

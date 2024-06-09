@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState, useRef, useCallback } from 'react';
-import BaseUrlContext from '../BaseUrlContext/BaseUrlContext';
 import { useParams } from 'react-router-dom';
 import './Message.css';
 import { UserContext } from '../userContext/UserContext';
@@ -14,7 +13,6 @@ function Message() {
   const [page, setPage] = useState(1);
   const intervalRef = useRef(null);
 
-  const baseURL = useContext(BaseUrlContext);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -39,32 +37,34 @@ function Message() {
   };
 
   const fetchMessages = useCallback(async (userName, page) => {
+    const token = localStorage.getItem('accessToken');
+    if (!token) {
+      alert('No access token found. Please log in.');
+      return;
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
+
     try {
-      const token = localStorage.getItem('accessToken');
-      if (!token) {
-        throw new Error('No access token found. Please log in.');
+      const response = await fetch(`https://dukes-1234-backend.vercel.app/api/v1/users/${userName}/message/${page}`, options);
+      if (response.ok) {
+        const responseData = await response.json();
+        setMessages(prevMessages => [...responseData.data].reverse() || []);
+      } else {
+        const errorData = await response.json();
+        alert(`Fetching messages failed: ${errorData.error}`);
       }
-
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        }
-      };
-
-      const response = await fetch(`${baseURL}/api/v1/users/${userName}/message/${page}`, options);
-      if (!response.ok) {
-        throw new Error(`Fetching messages failed: ${response.statusText}`);
-      }
-
-      const responseData = await response.json();
-      setMessages(prevMessages => [...responseData.data].reverse() || []);
     } catch (error) {
       console.error('Error:', error);
       alert('An error occurred while fetching messages. Please try again.');
     }
-  }, [baseURL]);
+  }, []);
 
   useEffect(() => {
     clearInterval(intervalRef.current);
@@ -93,29 +93,31 @@ function Message() {
         messContent: trimmedMessage
       };
 
+      const token = localStorage.getItem('accessToken');
+      if (!token) {
+        alert('No access token found. Please log in.');
+        return;
+      }
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(messageData)
+      };
+
       try {
-        const token = localStorage.getItem('accessToken');
-        if (!token) {
-          throw new Error('No access token found. Please log in.');
+        const response = await fetch(`https://dukes-1234-backend.vercel.app/api/v1/users/${otherUserName}/message/send`, options);
+        if (response.ok) {
+          setPage(1);
+          await fetchMessages(otherUserName, page);
+          setMessageCreated('');
+        } else {
+          const errorData = await response.json();
+          alert(`Sending message failed: ${errorData.error}`);
         }
-
-        const options = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-          },
-          body: JSON.stringify(messageData)
-        };
-
-        const response = await fetch(`${baseURL}/api/v1/users/${otherUserName}/message/send`, options);
-        if (!response.ok) {
-          throw new Error(`Sending message failed: ${response.statusText}`);
-        }
-
-        setPage(1);
-        await fetchMessages(otherUserName, page);
-        setMessageCreated('');
       } catch (error) {
         console.error('Error:', error);
         alert('An error occurred while sending the message. Please try again.');
@@ -149,8 +151,7 @@ function Message() {
             <option value=''>Select Other's userName</option>
             {friends.map((friend, index) => (
               <option key={index} value={friend}>{friend}</option>
-            ))
-          }
+            ))}
           </select>
           <input value={userName} readOnly />
         </div>
@@ -187,4 +188,3 @@ function Message() {
 }
 
 export default Message;
-

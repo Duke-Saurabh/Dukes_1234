@@ -1,7 +1,6 @@
 // Layout.js
 import React, { useContext, useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import BaseUrlContext from './BaseUrlContext/BaseUrlContext';
 import Header from "./Header";
 import Footer from "./Footer";
 import './Layout.css';
@@ -9,7 +8,6 @@ import { UserContext } from "./userContext/UserContext";
 
 function Layout() {
   const [logout, setLogout] = useState(false);
-  const baseURL=useContext(BaseUrlContext);
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -29,7 +27,7 @@ function Layout() {
     };
 
     try {
-      const response = await fetch(`${baseURL}/api/v1/users/logout`, options);
+      const response = await fetch('https://dukes-1234-backend.vercel.app/api/v1/users/logout', options);
       if (response.ok) {
         // Clear tokens from local storage
         localStorage.removeItem('accessToken');
