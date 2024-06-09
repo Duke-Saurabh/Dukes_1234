@@ -52,7 +52,7 @@ function Message() {
     };
 
     try {
-      const response = await fetch(`http://localhost:3000/api/v1/users/${userName}/message/${page}`, options);
+      const response = await fetch(`https://dukes-1234-backend.vercel.app/api/v1/users/${userName}/message/${page}`, options);
       if (response.ok) {
         const responseData = await response.json();
         setMessages(prevMessages => [...responseData.data].reverse() || []);
