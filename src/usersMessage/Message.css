@@ -1,6 +1,6 @@
 .message-box{
     width:90%;
-    height:85vh;
+    height:82vh;
     /* background-color: white; */
     margin:auto;
     margin-top: 0;
@@ -24,7 +24,7 @@
 }
 
 .create-message{
-    margin-top:3px;
+    margin-top:10px;
     width:100%;
     min-height:55px;
     border:2px solid rgb(230, 225, 225);
@@ -45,14 +45,14 @@
     line-height: 50px;
 }
 
-.sendMessage-btn{
+.send-message-btn{
     flex-grow: 1;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     border:0;
 }
 
-.sendMessage-btn:hover{
+.send-message-btn:hover{
     background-color: rgb(154, 144, 144);
     color:white;
 }
@@ -69,7 +69,7 @@
     display: flex;
     justify-content: baseline;
     gap:10px;
-    padding: 5px;
+    padding: 16px;
     margin:5px;
     background-color: white;
 }
@@ -92,5 +92,19 @@
     margin-left: auto;
 }
 
+@media (max-width: 600px) {
+    .message-date{
+      background-color: lightblue;
+      display: none;
+    }
 
-  
+    .messages{
+        width:100%;
+    }
+
+    .message-box{
+        width:100%;
+
+    }
+   
+  }

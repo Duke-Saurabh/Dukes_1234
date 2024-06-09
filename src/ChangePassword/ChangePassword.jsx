@@ -17,10 +17,10 @@ function ChangePassword() {
   const handlePasswordChangeEvent = async(event) => {
     event.preventDefault();
 
-    if (!captchaVerified) {
-      alert('Captcha is not Verified');
-      return;
-    }
+    // if (!captchaVerified) {
+    //   alert('Captcha is not Verified');
+    //   return;
+    // }
 
     if (!email || !userName || !securityQuestion || !securityAnswer || !newPassword || !confirmPassword) {
       alert('All fields are required');
@@ -116,9 +116,9 @@ function ChangePassword() {
                     setSecurityAnswer={setSecurityAnswer}
                   />
                 </div>
-                <div className="verifyCaptcha">
+                {/* <div className="verifyCaptcha">
                   <VerifyCaptcha setCaptchaVerified={setCaptchaVerified} />
-                </div>
+                </div> */}
               </div>
               <div className="password-change">
                 <label htmlFor="new-password">New Password</label>

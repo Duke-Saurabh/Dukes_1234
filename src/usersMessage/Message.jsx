@@ -52,7 +52,7 @@ function Message() {
     };
 
     try {
-      const response = await fetch(`https://dukes-1234-backend.vercel.app/api/v1/users/${userName}/message/${page}`, options);
+      const response = await fetch(`http://localhost:3000/api/v1/users/${userName}/message/${page}`, options);
       if (response.ok) {
         const responseData = await response.json();
         setMessages(prevMessages => [...responseData.data].reverse() || []);
@@ -135,7 +135,7 @@ function Message() {
 
   return (
     <div className='message-container'>
-      <h1>Welcome {userName}</h1>
+      {/* <h1>Welcome {userName}</h1> */}
       <div className='add-friend'>
         <input
           value={friendInput}
@@ -156,9 +156,11 @@ function Message() {
           <input value={userName} readOnly />
         </div>
         
-        <div className='page-info'>Page: {page}</div>
+        {/* <div className='page-info'>Page: {page}</div> */}
         <button type='button' onClick={handleLoadOlderMessages}>Load Older Messages</button>
+        <button type='button' onClick={handleLoadNewerMessages}>Load Newer Messages</button>
         <div className='messages'>
+        <div className='page-info'>Page: {page}</div>
           {messages.length > 0 ? (
             messages.map((message, index) => (
               <div key={index} className='message'>
@@ -170,10 +172,11 @@ function Message() {
               </div>
             ))
           ) : (
+            
             <p>No messages to display.</p>
           )}
         </div>
-        <button type='button' onClick={handleLoadNewerMessages}>Load Newer Messages</button>
+      
         <div className='create-message'>
           <input
             value={messageCreated}

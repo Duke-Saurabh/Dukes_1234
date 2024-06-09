@@ -68,10 +68,51 @@
     text-decoration:none;
 }
 
-/* .forget-password-link{
-    text-decoration:none;
-} */
-/*
-.sign-up-btn{
-    text-align: right;
-} */
+/* Existing styles... */
+
+@media (max-width: 600px) {
+    .login {
+        width: 90%;
+        margin-top: 10%;
+        padding: 10px;
+    }
+
+    .login-box {
+        height: auto; /* Allow the height to adjust based on content */
+        border: none;
+    }
+
+    .login-description {
+        height: auto; /* Allow the height to adjust based on content */
+        padding: 10px;
+    }
+
+    .login-description p {
+        padding: 10px;
+    }
+
+    .login-main-box, .login-main-box div {
+        padding: 5px;
+        background-color: rgb(172, 164, 164);
+    }
+
+    .login-main-box div input {
+        padding: 5px;
+    }
+
+    .login-btn {
+        text-align: center;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .other-opt {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .forget-password, .sign-up {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
