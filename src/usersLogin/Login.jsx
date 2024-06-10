@@ -44,8 +44,8 @@ const handleLogin = async (e) => {
   };
 
   try {
-    const response = await fetch('https://dukes-1234-backend.vercel.app/api/v1/users/login',options);
-    console.log(response);
+const response = await fetch('/api/v1/users/login', options);
+
     if (response.ok) {
       const responseData = await response.json();
       const { accessToken, refreshToken,user } = responseData;

@@ -53,7 +53,7 @@ function ChangePassword() {
     try {
       // Perform the password change request
       // fetch('your-api-endpoint', options).then(response => response.json()).then(data => { /* handle response */ });
-      const response=await fetch('https://dukes-1234-backend.vercel.app/api/v1/users/password',options);
+      const response=await fetch('/api/v1/users/password',options);
         if (response.ok) {
           alert('Password Change successful!');
           

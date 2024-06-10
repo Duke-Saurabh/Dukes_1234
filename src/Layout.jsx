@@ -27,7 +27,7 @@ function Layout() {
     };
 
     try {
-      const response = await fetch('https://dukes-1234-backend.vercel.app/api/v1/users/logout', options);
+      const response = await fetch('/api/v1/users/logout', options);
       if (response.ok) {
         // Clear tokens from local storage
         localStorage.removeItem('accessToken');

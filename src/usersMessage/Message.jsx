@@ -52,7 +52,7 @@ function Message() {
     };
 
     try {
-      const response = await fetch(`https://dukes-1234-backend.vercel.app/api/v1/users/${userName}/message/${page}`, options);
+      const response = await fetch(`/api/v1/users/${userName}/message/${page}`, options);
       if (response.ok) {
         const responseData = await response.json();
         setMessages(prevMessages => [...responseData.data].reverse() || []);
@@ -109,7 +109,7 @@ function Message() {
       };
 
       try {
-        const response = await fetch(`https://dukes-1234-backend.vercel.app/api/v1/users/${otherUserName}/message/send`, options);
+        const response = await fetch(`/api/v1/users/${otherUserName}/message/send`, options);
         if (response.ok) {
           setPage(1);
           await fetchMessages(otherUserName, page);
